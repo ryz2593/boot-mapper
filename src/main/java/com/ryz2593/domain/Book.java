@@ -2,8 +2,8 @@ package com.ryz2593.domain;
 
 import tk.mybatis.mapper.annotation.KeySql;
 
-import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -12,6 +12,7 @@ import java.util.Date;
  * @date 2019/4/11
  * @desc
  */
+@Table(name = "tb_book")
 public class Book {
     @Id
     @KeySql(useGeneratedKeys = true)

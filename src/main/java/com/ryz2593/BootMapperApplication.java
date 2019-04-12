@@ -1,7 +1,10 @@
 package com.ryz2593;
 
+import com.ryz2593.domain.Book;
+import com.ryz2593.mapper.BookMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
@@ -12,7 +15,14 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class BootMapperApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BootMapperApplication.class, args);
+		ConfigurableApplicationContext
+				context = SpringApplication.run(BootMapperApplication.class, args);
+
+		BookMapper bookMapper = context.getBean(BookMapper.class);
+		System.out.println(bookMapper);
+		Book book = bookMapper.selectByPrimaryKey(1);
+		System.out.println(book);
+		context.close();
 	}
 
 }
